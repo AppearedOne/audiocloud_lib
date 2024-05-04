@@ -10,7 +10,7 @@ pub struct SearchResult {
     pub samples: Vec<Sample>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SearchParams {
     pub query: String,
     pub sample_type: Option<SampleType>,
@@ -33,7 +33,7 @@ pub struct Sample {
     pub sampletype: SampleType,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct PackInfo {
     pub description: String,
     pub name: String,
@@ -175,6 +175,7 @@ fn detect_type(path: &str) -> SampleType {
         "loop",
         "loops",
     ];
+    // todo: load keywords from json
     let path_lower = path.to_lowercase();
     for keyword in loop_signals {
         if path_lower.contains(keyword) {
