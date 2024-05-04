@@ -5,7 +5,7 @@ use std::io::prelude::*;
 use std::usize;
 use walkdir::WalkDir;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SearchResult {
     pub samples: Vec<Sample>,
 }
