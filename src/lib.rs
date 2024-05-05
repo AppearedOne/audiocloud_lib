@@ -1,4 +1,3 @@
-use rayon::prelude::*;
 use serde_derive::{Deserialize, Serialize};
 use std::fs::File;
 use std::io::prelude::*;
@@ -91,12 +90,21 @@ pub fn use_sample_relevance(
     }
 
     let mut relevancy = 0;
+    let mut is_filtered = false;
     text_queries.iter().for_each(|token| {
+        if token.starts_with('-') {
+            if sample.path.to_lowercase().contains(&token.to_lowercase()) {
+                is_filtered = true;
+            }
+        }
         if sample.path.to_lowercase().contains(&token.to_lowercase()) {
             relevancy += 1;
         }
     });
 
+    if is_filtered {
+        return 0;
+    }
     return relevancy;
 }
 
