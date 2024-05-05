@@ -93,7 +93,11 @@ pub fn use_sample_relevance(
     let mut is_filtered = false;
     text_queries.iter().for_each(|token| {
         if token.starts_with('-') {
-            if sample.path.to_lowercase().contains(&token.to_lowercase()) {
+            if sample
+                .path
+                .to_lowercase()
+                .contains(&token.to_lowercase().replace("-", ""))
+            {
                 is_filtered = true;
             }
         }
