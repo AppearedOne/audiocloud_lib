@@ -92,17 +92,19 @@ pub fn use_sample_relevance(
     let mut relevancy = 0;
     let mut is_filtered = false;
     text_queries.iter().for_each(|token| {
-        if token.starts_with('-') {
-            if sample
-                .path
-                .to_lowercase()
-                .contains(&token.to_lowercase().replace("-", ""))
-            {
-                is_filtered = true;
+        if !token.is_empty() {
+            if token.starts_with('-') {
+                if sample
+                    .path
+                    .to_lowercase()
+                    .contains(&token.to_lowercase().replace("-", ""))
+                {
+                    is_filtered = true;
+                }
             }
-        }
-        if sample.path.to_lowercase().contains(&token.to_lowercase()) {
-            relevancy += 1;
+            if sample.path.to_lowercase().contains(&token.to_lowercase()) {
+                relevancy += 1;
+            }
         }
     });
 
