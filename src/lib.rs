@@ -52,9 +52,8 @@ pub struct SampleLibrary {
     pub name: String,
 }
 
-pub fn get_packs_metadata(lib: &SampleLibrary) -> Vec<PackInfo> {
-    //return lib.packs.into_iter().map(|p| p.meta).collect();
-    todo!();
+pub fn get_packs_metadata(lib: SampleLibrary) -> Vec<PackInfo> {
+    lib.packs.into_iter().map(|p| p.meta).collect()
 }
 
 pub fn use_sample_relevance(
