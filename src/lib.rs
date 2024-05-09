@@ -118,9 +118,9 @@ pub fn search_lib(lib: &SampleLibrary, query: &SearchParams) -> SearchResult {
     let query_lowercase = query.query.to_lowercase();
     let mut text_queries: Vec<&str> = query_lowercase.split(' ').collect();
     text_queries.iter_mut().for_each(|s| *s = s.trim());
-    text_queries
-        .iter()
-        .for_each(|q| println!("QUERYUNIQUE: {}", q));
+    /* text_queries
+    .iter()
+    .for_each(|q| println!("QUERYUNIQUE: {}", q));*/
 
     let mut sorting_vec: Vec<(Sample, i32)> = vec![];
     for pack in &lib.packs {
