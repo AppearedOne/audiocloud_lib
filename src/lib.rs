@@ -60,6 +60,10 @@ pub fn get_packs_metadata(lib: &SampleLibrary) -> Vec<PackInfo> {
     out
 }
 
+pub fn fuzzy_relevancy(path: &str, queries: &Vec<String>) -> i32 {
+    todo!();
+}
+
 pub fn use_sample_relevance(
     query: &SearchParams,
     sample: &Sample,
