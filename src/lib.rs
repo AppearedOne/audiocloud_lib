@@ -40,6 +40,13 @@ pub struct PackInfo {
     num_samples: Option<u32>,
 }
 
+// Config object for **server side** pack recognition
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct LocalPackInfo {
+    pub description: String,
+    pub name: String,
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Pack {
     pub samples: Vec<Sample>,
